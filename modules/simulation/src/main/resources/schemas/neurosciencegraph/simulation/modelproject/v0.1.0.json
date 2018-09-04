@@ -1,0 +1,118 @@
+{
+    "@context": [
+        "{{base}}/contexts/neurosciencegraph/core/schema/v0.1.0",
+        {
+            "this": "{{base}}/schemas/neuralactivity/simulation/modelproject/v0.1.0/shapes/"
+        }
+    ],
+    "@type": "nxv:Schema",
+    "imports": [
+        "{{base}}/schemas/neuralactivity/commons/entity/v0.1.0",
+        "{{base}}/schemas/neuralactivity/commons/typedlabeledontologyterm/v0.1.4"
+    ],
+    "shapes": [{
+        "@id": "this:ModelProjectShape",
+        "@type": "sh:NodeShape",
+        "label": "This shape corresponds to the model entity on the HBP model catalog app",
+        "nodekind": "sh:BlankNodeOrIRI",
+        "targetClass": "nsg:ModelProject",
+        "and": [{
+                "node": "{{base}}/schemas/neuralactivity/commons/entity/v0.1.0/shapes/EntityShape"
+            },
+            {
+                "property": [{
+                        "path": "nsg:modelOf",
+                        "name": "Model of",
+                        "description": "Models of many things such as cells, ion channels, circuits, whole brains,...",
+                        "editorialNote": "The value of this property should be constraint by a sh:class corresponding to what is being modeled."
+                    },
+                    {
+                        "path": "nsg:alias",
+                        "name": "Alias",
+                        "description": "the alias of the model project.",
+                        "editorialNote": "used as an identifier, should be unique.",
+                        "datatype": "xsd:string",
+                        "mincount": "1",
+                        "maxcount": "1"
+                    },
+                    {
+                        "path": "nsg:brainRegion",
+                        "name": "Brain region",
+                        "description": "Brain region",
+                        "node": "{{base}}/schemas/neuralactivity/commons/typedlabeledontologyterm/v0.1.4/shapes/BrainRegionOntologyTermShape"
+                    },
+                    {
+                        "path": "nsg:species",
+                        "name": "Species",
+                        "description": "Species",
+                        "node": "{{base}}/schemas/neuralactivity/commons/typedlabeledontologyterm/v0.1.4/shapes/SpeciesOntologyTermShape"
+                    },
+                    {
+                        "path": "nsg:celltype",
+                        "name": "Cell type",
+                        "description": "Cell type",
+                        "node": "{{base}}/schemas/neuralactivity/commons/typedlabeledontologyterm/v0.1.4/shapes/CellTypeOntologyTermShape"
+                    },
+                    {
+                        "path": "nsg:organization",
+                        "name": "Organization",
+                        "description": "Organization",
+                        "node": "{{base}}/schemas/neuralactivity/commons/organization/v0.1.0/shapes/OrganizationShape"
+                    },
+                    {
+                        "path": "nsg:abstractionLevel",
+                        "name": "Abstraction Level",
+                        "description": "Abstraction level of the model",
+                        "node": "{{base}}/schemas/neuralactivity/commons/typedlabeledontologyterm/v0.1.4/shapes/AbstractionLevelOntologyTermShape"
+                    },
+                    {
+                        "path": "nsg:private",
+                        "name": "Private",
+                        "description": "a boolean flag indicating whether the model is restricted to the persons belonging to the collab where its belong",
+                        "datatype": "xsd:boolean",
+                        "maxcount": "1",
+                        "mincount": "1"
+                    },
+                    {
+                        "path": "schema:author",
+                        "name": "Author",
+                        "description": "Author of the model Project",
+                        "node": "{{base}}/schemas/neuralactivity/commons/person/v0.1.0/shapes/PersonShape",
+                        "mincount": "1"
+                    },
+                    {
+                        "path": "nsg:owner",
+                        "name": "Owner",
+                        "description": "Owner of the model Project",
+                        "node": "{{base}}/schemas/neuralactivity/commons/person/v0.1.0/shapes/PersonShape",
+                        "maxcount": "1",
+                        "mincount": "1"
+                    },
+                    {
+                        "path": "schema:description",
+                        "name": "Description",
+                        "description": "model project description",
+                        "datatype": "xsd:string",
+                        "mincount": "1",
+                        "maxcount": "1"
+                    },
+                    {
+                        "path": "nsg:collabID",
+                        "name": "collab id",
+                        "description": "collab id of the model project",
+                        "datatype": "xsd:int",
+                        "mincount": "1",
+                        "maxcount": "1"
+                    },
+                    {
+                        "path": "nsg:PLAComponents",
+                        "name": "PLA components",
+                        "description": "PLA components",
+                        "datatype": "xsd:string"
+                    }
+
+                ]
+            }
+        ]
+    }]
+}
